@@ -4,6 +4,7 @@ import {
   Container,
   Heading,
   Text,
+  Flex,
   VStack,
   Button,
   Image,
@@ -21,70 +22,67 @@ const Home = () => {
       <Navbar />
 
       <Container
-        maxW="100%"
-        h="94vh"
-        bg="url('https://wallpapers.com/images/hd/dark-aesthetic-world-map-w1svazb2ay69orbw.jpg') center/cover"
+        maxW="100vw"
+        h={{ base: "100vh", md: "100vh" }}
+        bg="url('https://wallpapers.com/images/hd/dark-aesthetic-world-map-w1svazb2ay69orbw.jpg') center/cover fixed"
         position="relative"
         bgColor="black"
+        backgroundAttachment="fixed"
       >
-        <div
-          position="absolute"
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
-          bg="rgba(0, 0, 0, 0.5)" // Adjust the opacity and color as needed
-        ></div>
-
-        <VStack
-          spacing={4}
-          align="flex-start" // Align text to the left
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          color="gray.300" // Suitable text color for black background
-          textAlign="left" // Align text to the left
+        <Flex
+          justify="space-between" // Utilize more space
+          align="center"
+          h="100%"
+          px={{ base: 4, md: 8 }} // Add padding to the left and right
         >
-          <Heading
-            as="h1"
-            fontSize={{ base: "4xl", md: "6xl" }} // Increased heading size
-            fontWeight="bold"
-            mb={4} // Added margin-bottom for separation
-          >
-            Welcome to Pangea News
-          </Heading>
-
-          <Text
-            fontSize={{ base: "xl", md: "2xl" }}
-            fontWeight="medium"
-            mb={8} // Added margin-bottom for separation
-          >
-            Explore the latest international news from around the globe. Stay
-            informed on politics, business, technology, sports, and more.
-          </Text>
-
-          <Button
-            bg="teal.500"
+          <VStack
+            spacing={4}
+            align="start" // Align text to the start
             color="white"
-            _hover={{ bg: "teal.600" }}
-            size="lg"
+            textAlign="start" // Align text to the start
+            w="80%"
+            p="0px 20px"
           >
-            Explore
-          </Button>
-        </VStack>
+            <Heading
+              as="h1"
+              fontSize={{ base: "3xl", md: "7xl" }}
+              fontWeight="350"
+              textShadow="2px 2px rgb(0,0,0,.2)"
+              mb={4}
+            >
+              Welcome to Pangea News
+            </Heading>
 
-        {/* Replace '/your-gif.gif' with the actual path to your GIF */}
-        <Image
-          src="https://blog.flixel.com/wp-content/uploads/2016/04/spacecinemagraph.gif"
-          alt="Your GIF"
-          position="absolute"
-          top={0}
-          right={0}
-          bottom={0}
-          objectFit="cover"
-          display={{ base: "none", md: "block" }} // Show only on larger screens
-        />
+            <Text
+              fontSize={{ base: "lg", md: "2xl" }}
+              fontWeight="medium"
+              color="gray.300"
+              mb={8}
+            >
+              Embark on a journey through the latest international news,
+              offering insights into global events. Stay informed on diverse
+              topics such as politics, business, technology, sports, and more.
+            </Text>
+
+            <Button
+              bg="teal.400"
+              color="white"
+              _hover={{ bg: "teal.600" }}
+              size="lg"
+            >
+              Explore
+            </Button>
+          </VStack>
+
+          <Image
+            src="https://blog.flixel.com/wp-content/uploads/2016/04/spacecinemagraph.gif"
+            alt="Your GIF"
+            objectFit="cover"
+            boxShadow="2px 2px 10px  #68c3d1"
+            borderRadius="md"
+            boxSize={{ base: "100%", md: "60%" }} // Take up more space on larger screens
+          />
+        </Flex>
       </Container>
 
       <Container maxW="container.lg" mt={8}>
