@@ -1,41 +1,56 @@
 // components/Navbar.js
-import Link from "next/link";
+import { Box, Flex, Link, Spacer } from "@chakra-ui/react";
+import { FaUserPlus, FaSignInAlt } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <nav>
-      <div className="logo">
-        <Link href="/">
+    <Flex
+      bg="gray.800"
+      p={4}
+      alignItems="center"
+      direction={{ base: "column", md: "row" }}
+    >
+      <Box>
+        <Link href="/" fontSize="xl" color="white">
           Your Logo
         </Link>
-      </div>
+      </Box>
 
-      <div className="nav-links">
-        <Link href="/">
+      <Spacer />
+
+      <Box
+        display={{ base: "none", md: "flex" }}
+        alignItems="center"
+        justifyContent="space-between"
+        width={{ base: "100%", md: "auto" }}
+      >
+        <Link href="/" mr={4} color="white">
           Home
         </Link>
-        <Link href="/world">
+        <Link href="/world" mr={4} color="white">
           World
         </Link>
-        <Link href="/politics">
+        <Link href="/politics" mr={4} color="white">
           Politics
         </Link>
-        <Link href="/business">
+        <Link href="/business" mr={4} color="white">
           Business
         </Link>
-        <Link href="/technology">
+        <Link href="/technology" mr={4} color="white">
           Technology
         </Link>
-        <Link href="/sports">
+        <Link href="/sports" color="white">
           Sports
         </Link>
-      </div>
+      </Box>
 
-      <div className="register-icons">
-        <i className="fas fa-user-plus"></i>
-        <i className="fas fa-sign-in-alt"></i>
-      </div>
-    </nav>
+      <Spacer />
+
+      <Box>
+        <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
+        {/* <FaSignInAlt size="1.5em" color="white" cursor="pointer" /> */}
+      </Box>
+    </Flex>
   );
 };
 
