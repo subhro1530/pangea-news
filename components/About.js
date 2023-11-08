@@ -3,14 +3,13 @@ import { useEffect, useRef } from "react";
 
 const About = () => {
   const boxRef = useRef(null);
-  let degree = 0;
+  const degreeRef = useRef(0);
 
   useEffect(() => {
     const updateGradient = () => {
-      degree += 0.4;
-      if (degree >= 360)
-        degree = 0;
-      boxRef.current.style.backgroundImage = `linear-gradient(${degree}deg, black,rgb(60,0,150), cyan)`;
+      degreeRef.current += 0.4;
+      if (degreeRef.current >= 360) degreeRef.current = 0;
+      boxRef.current.style.backgroundImage = `linear-gradient(${degreeRef.current}deg, black, rgb(60, 0, 150), cyan)`;
     };
 
     const intervalId = setInterval(updateGradient, 1);
@@ -104,9 +103,9 @@ const About = () => {
                 <Box color="gray.300">
                   Pangea, your rapid news source, delivers breaking news with
                   unparalleled speed. Stay ahead as we cover the latest events,
-                  ensuring you're informed in real-time. Experience swift and
-                  reliable updates on a diverse range of topics, connecting you
-                  to the pulse of the world.
+                  ensuring you&apos;re informed in real-time. Experience swift
+                  and reliable updates on a diverse range of topics, connecting
+                  you to the pulse of the world.
                 </Box>
               </VStack>
             </Box>
