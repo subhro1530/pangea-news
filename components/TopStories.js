@@ -1,4 +1,3 @@
-// components/TopStories.js
 import { useEffect, useState } from "react";
 import {
   Box,
@@ -23,7 +22,7 @@ const TopStories = () => {
           {
             params: {
               country: "us",
-              apiKey: "6216cb452694485aa18c953891532050", // Replace with your News API key
+              apiKey: "6216cb452694485aa18c953891532050",
             },
           }
         );
@@ -40,8 +39,23 @@ const TopStories = () => {
   }, []);
 
   return (
-    <VStack mt={8} spacing={8} align="stretch" p="20px 50px">
-      <Box as="h1" fontWeight={300} color="#0d0d0d" fontSize="50px">
+    <VStack
+      // mt={8}
+      p="20px 50px"
+      bgImage="url('https://4kwallpapers.com/images/wallpapers/spot-lights-blue-dark-background-indoor-5k-6016x3384-2092.jpg')"
+      bgSize="cover"
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bgAttachment="fixed"
+    >
+      <Box
+        as="h1"
+        fontWeight={300}
+        mt={5}
+        mb={5}
+        fontSize="50px"
+        color="white"
+      >
         Top Stories For You
       </Box>
       {loading ? (
