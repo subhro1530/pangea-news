@@ -42,20 +42,13 @@ const TopStories = () => {
     <VStack
       // mt={8}
       p="20px 50px"
-      bgImage="url('https://4kwallpapers.com/images/wallpapers/spot-lights-blue-dark-background-indoor-5k-6016x3384-2092.jpg')"
+      bgImage="url('https://static.vecteezy.com/system/resources/thumbnails/013/654/649/original/3d-virtual-tv-studio-news-backdrop-for-tv-shows-tv-on-wall-3d-virtual-news-studio-background-loop-free-video.jpg')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
       bgAttachment="fixed"
     >
-      <Box
-        as="h1"
-        fontWeight={300}
-        mt={5}
-        mb={5}
-        fontSize="50px"
-        color="white"
-      >
+      <Box as="h1" fontWeight={300} mt={5} mb={5} fontSize="50px" color="white">
         Top Stories For You
       </Box>
       {loading ? (
