@@ -10,7 +10,9 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
-import TopStories from "../components/TopStories";
+import Footer from "@/components/Footer";
+import About from "@/components/About";
+import TopStories from "@/components/TopStories";
 
 const Home = () => {
   return (
@@ -19,7 +21,7 @@ const Home = () => {
         <title>Pangea News</title>
       </Head>
 
-      <Navbar />
+      <Navbar zIndex={1000} />
 
       <Container
         maxW="100vw"
@@ -28,6 +30,7 @@ const Home = () => {
         position="relative"
         bgColor="black"
         backgroundAttachment="fixed"
+        zIndex={800}
       >
         <Flex
           justify="space-between" // Utilize more space
@@ -78,16 +81,16 @@ const Home = () => {
             src="https://blog.flixel.com/wp-content/uploads/2016/04/spacecinemagraph.gif"
             alt="Your GIF"
             objectFit="cover"
-            boxShadow="2px 2px 10px  #68c3d1"
-            borderRadius="md"
-            boxSize={{ base: "100%", md: "60%" }} // Take up more space on larger screens
+            boxShadow="2px 2px 10px  rgb(0,0,0,.8)"
+            borderRadius="50%"
+            width="30vw"
+            height="30vw"
           />
         </Flex>
       </Container>
-
-      <Container maxW="container.lg" mt={8}>
-        <TopStories />
-      </Container>
+      <About />
+      <TopStories/>
+      <Footer />
     </div>
   );
 };

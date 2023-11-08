@@ -6,31 +6,42 @@ import {
   Spacer,
   Icon,
   useOutsideClick,
+  VStack,
 } from "@chakra-ui/react";
 import { FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
 import { useState, useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const navRef = useRef();
+  const router = useRouter();
 
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const closeDropdowns = () => {
+    setIsMobileNavOpen(false);
+    setIsUserDropdownOpen(false);
+  };
+
   useOutsideClick({
     ref: navRef,
     handler: () => {
-      if (isMobileNavOpen) {
-        toggleMobileNav();
-      }
+      closeDropdowns();
     },
   });
 
   return (
     <Flex
-      bgColor="rgb(0,8,10,.7)"
+      bgColor="rgb(0,0,0,.85)"
       boxShadow="lg"
       p={4}
       alignItems="center"
@@ -145,7 +156,7 @@ const Navbar = () => {
             background="transparent"
             border="none"
           >
-            <Icon as={FaTimes} />
+            <Icon as={FaTimes} mr={5}/>
           </Box>
           <Link
             href="/"
@@ -203,9 +214,32 @@ const Navbar = () => {
         </Box>
       )}
 
-      <Box display={{ base: "none", md: "flex" }}>
-        <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
+      <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
+        <FaUserPlus size="1.5em" color="white" mr={2}  cursor="pointer" />
       </Box>
+
+      {isUserDropdownOpen && (
+        <VStack
+          bg="rgba(0, 0, 0, 0.9)"
+          position="fixed"
+          top="4.5rem"
+          right="1rem"
+          p={5}
+          borderRadius="md"
+          zIndex="150"
+          onClick={closeDropdowns}
+        >
+          <Link href="/signin" color="white" _hover={{ color: "cyan" }}>
+            Sign In
+          </Link>
+          <Link href="/signup" color="white" _hover={{ color: "cyan" }}>
+            Sign Up
+          </Link>
+          <Link href="/help" color="white" _hover={{ color: "cyan" }}>
+            Help
+          </Link>
+        </VStack>
+      )}
     </Flex>
   );
 };
