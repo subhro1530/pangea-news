@@ -8,3 +8,8 @@
 * {
   font-family: 'Julius Sans One', sans-serif;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

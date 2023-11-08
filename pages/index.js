@@ -10,7 +10,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
-import TopStories from "../components/TopStories";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
         <title>Pangea News</title>
       </Head>
 
-      <Navbar />
+      <Navbar zIndex={1000} />
 
       <Container
         maxW="100vw"
@@ -28,6 +28,7 @@ const Home = () => {
         position="relative"
         bgColor="black"
         backgroundAttachment="fixed"
+        zIndex={800}
       >
         <Flex
           justify="space-between" // Utilize more space
@@ -85,9 +86,7 @@ const Home = () => {
         </Flex>
       </Container>
 
-      <Container maxW="container.lg" mt={8}>
-        <TopStories />
-      </Container>
+        <Footer/>
     </div>
   );
 };

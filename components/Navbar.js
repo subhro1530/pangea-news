@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <Flex
-      bgColor="rgb(0,8,10,.7)"
+      bgColor="rgb(0,0,0,.85)"
       boxShadow="lg"
       p={4}
       alignItems="center"
