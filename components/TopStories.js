@@ -8,7 +8,6 @@ import {
   Link,
   Spinner,
 } from "@chakra-ui/react";
-import axios from "axios";
 
 const apikey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
 
@@ -21,18 +20,20 @@ const TopStories = () => {
   useEffect(() => {
     const fetchTopStories = async () => {
       try {
-        const response = await axios.get(
-          "https://gnews.io/api/v4/top-headlines",
-          {
-            params: {
-              category: apiCategory,
-              lang: apiLanguage,
-              apikey: apikey,
-            },
-          }
-        );
-
-        setArticles(response.data.articles);
+        let url =
+          "https://gnews.io/api/v4/top-headlines?category=" +
+          apiCategory +
+          "&lang=" +
+          apiLanguage +
+          "&apikey=" +
+          apikey;
+        fetch(url)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            setArticles(data.articles);
+          });
         setLoading(false);
       } catch (error) {
         console.error("Error fetching top stories:", error);
