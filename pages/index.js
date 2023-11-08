@@ -12,6 +12,7 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
+import TopStories from "@/components/TopStories";
 
 const Home = () => {
   return (
@@ -88,6 +89,7 @@ const Home = () => {
         </Flex>
       </Container>
       <About />
+      <TopStories/>
       <Footer />
     </div>
   );
