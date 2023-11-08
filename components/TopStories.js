@@ -10,24 +10,29 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
+const apikey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
+
 const TopStories = () => {
-  const [topStories, setTopStories] = useState([]);
+  const [articles, setArticles] = useState([]);
+  const [apiCategory, setapiCategory] = useState(["world"]);
+  const [apiLanguage, setapiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTopStories = async () => {
       try {
         const response = await axios.get(
-          "https://newsapi.org/v2/top-headlines",
+          "https://gnews.io/api/v4/top-headlines",
           {
             params: {
-              country: "us",
-              apiKey: "6216cb452694485aa18c953891532050",
+              category: apiCategory,
+              lang: apiLanguage,
+              apikey: apikey,
             },
           }
         );
 
-        setTopStories(response.data.articles.slice(0, 10));
+        setArticles(response.data.articles);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching top stories:", error);
@@ -36,8 +41,7 @@ const TopStories = () => {
     };
 
     fetchTopStories();
-  }, []);
-
+  }, [apiCategory, apiLanguage]);
   return (
     <VStack
       // mt={8}
@@ -54,9 +58,9 @@ const TopStories = () => {
       {loading ? (
         <Spinner size="xl" />
       ) : (
-        topStories.map((story) => (
+        articles.map((newsHeadline) => (
           <Box
-            key={story.title}
+            key={newsHeadline.title}
             p={4}
             bgColor="#0d0d0d"
             borderRadius="md"
@@ -68,10 +72,10 @@ const TopStories = () => {
               boxShadow: "lg",
             }}
           >
-            <Link href={story.url} isExternal>
+            <Link href={newsHeadline.url} isExternal>
               <Image
-                src={story.urlToImage}
-                alt={story.title}
+                src={newsHeadline.image}
+                alt={newsHeadline.title}
                 borderRadius="md"
                 mb={4}
               />
@@ -84,11 +88,35 @@ const TopStories = () => {
                 mb={2}
                 textDecoration="none"
               >
-                {story.title}
+                {newsHeadline.title}
               </Heading>
             </Link>
             <Text fontSize="sm" color="grey">
-              {story.description}
+              {newsHeadline.description}
+            </Text>
+            <Text fontSize="sm" color="grey">
+              {newsHeadline.content}.
+            </Text>
+            <Text fontSize="xs" color="white">
+              Read more at :
+              <Link
+                href={newsHeadline.source.url}
+                fontSize="xs"
+                fontWeight="bold"
+                color="lavenderblush"
+                fontStyle="Ubuntu"
+                textShadow="2px -1px 4px white"
+                textDecoration="none"
+                target="_blank"
+              >
+                {newsHeadline.source.url}
+              </Link>
+            </Text>
+            <Text fontSize="xs" color="white">
+              Published At : {newsHeadline.publishedAt}
+            </Text>
+            <Text fontSize="xs" color="white">
+              Source : {newsHeadline.source.name}
             </Text>
           </Box>
         ))

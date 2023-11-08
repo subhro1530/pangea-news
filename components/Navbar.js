@@ -83,20 +83,20 @@ const Navbar = () => {
           World
         </Link>
         <Link
-          href="/politics"
-          mr={4}
-          color="white"
-          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
-        >
-          Politics
-        </Link>
-        <Link
           href="/business"
           mr={4}
           color="white"
           _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Business
+        </Link>
+        <Link
+          href="/politics"
+          mr={4}
+          color="white"
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
+        >
+          Health
         </Link>
         <Link
           href="/technology"
