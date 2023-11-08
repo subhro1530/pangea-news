@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
+import About from "@/components/About";
 
 const Home = () => {
   return (
@@ -79,14 +80,15 @@ const Home = () => {
             src="https://blog.flixel.com/wp-content/uploads/2016/04/spacecinemagraph.gif"
             alt="Your GIF"
             objectFit="cover"
-            boxShadow="2px 2px 10px  #68c3d1"
-            borderRadius="md"
-            boxSize={{ base: "100%", md: "60%" }} // Take up more space on larger screens
+            boxShadow="2px 2px 10px  rgb(0,0,0,.8)"
+            borderRadius="50%"
+            width="30vw"
+            height="30vw"
           />
         </Flex>
       </Container>
-
-        <Footer/>
+      <About />
+      <Footer />
     </div>
   );
 };

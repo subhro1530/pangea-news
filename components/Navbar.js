@@ -6,25 +6,36 @@ import {
   Spacer,
   Icon,
   useOutsideClick,
+  VStack,
 } from "@chakra-ui/react";
 import { FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
 import { useState, useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const navRef = useRef();
+  const router = useRouter();
 
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
 
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const closeDropdowns = () => {
+    setIsMobileNavOpen(false);
+    setIsUserDropdownOpen(false);
+  };
+
   useOutsideClick({
     ref: navRef,
     handler: () => {
-      if (isMobileNavOpen) {
-        toggleMobileNav();
-      }
+      closeDropdowns();
     },
   });
 
@@ -59,7 +70,7 @@ const Navbar = () => {
           href="/"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Home
         </Link>
@@ -67,7 +78,7 @@ const Navbar = () => {
           href="/world"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           World
         </Link>
@@ -75,7 +86,7 @@ const Navbar = () => {
           href="/politics"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Politics
         </Link>
@@ -83,7 +94,7 @@ const Navbar = () => {
           href="/business"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Business
         </Link>
@@ -91,14 +102,14 @@ const Navbar = () => {
           href="/technology"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Technology
         </Link>
         <Link
           href="/sports"
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Sports
         </Link>
@@ -145,14 +156,14 @@ const Navbar = () => {
             background="transparent"
             border="none"
           >
-            <Icon as={FaTimes} />
+            <Icon as={FaTimes} mr={5}/>
           </Box>
           <Link
             href="/"
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Home
           </Link>
@@ -161,7 +172,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             World
           </Link>
@@ -170,7 +181,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Politics
           </Link>
@@ -179,7 +190,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Business
           </Link>
@@ -188,7 +199,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Technology
           </Link>
@@ -196,16 +207,39 @@ const Navbar = () => {
             href="/sports"
             color="white"
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Sports
           </Link>
         </Box>
       )}
 
-      <Box display={{ base: "none", md: "flex" }}>
-        <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
+      <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
+        <FaUserPlus size="1.5em" color="white" mr={2}  cursor="pointer" />
       </Box>
+
+      {isUserDropdownOpen && (
+        <VStack
+          bg="rgba(0, 0, 0, 0.9)"
+          position="fixed"
+          top="4.5rem"
+          right="1rem"
+          p={5}
+          borderRadius="md"
+          zIndex="150"
+          onClick={closeDropdowns}
+        >
+          <Link href="/signin" color="white" _hover={{ color: "cyan" }}>
+            Sign In
+          </Link>
+          <Link href="/signup" color="white" _hover={{ color: "cyan" }}>
+            Sign Up
+          </Link>
+          <Link href="/help" color="white" _hover={{ color: "cyan" }}>
+            Help
+          </Link>
+        </VStack>
+      )}
     </Flex>
   );
 };
