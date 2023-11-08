@@ -59,7 +59,7 @@ const Navbar = () => {
           href="/"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Home
         </Link>
@@ -67,38 +67,38 @@ const Navbar = () => {
           href="/world"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           World
-        </Link>
-        <Link
-          href="/politics"
-          mr={4}
-          color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
-        >
-          Politics
         </Link>
         <Link
           href="/business"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Business
+        </Link>
+        <Link
+          href="/politics"
+          mr={4}
+          color="white"
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
+        >
+          Health
         </Link>
         <Link
           href="/technology"
           mr={4}
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Technology
         </Link>
         <Link
           href="/sports"
           color="white"
-          _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Sports
         </Link>
@@ -152,7 +152,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Home
           </Link>
@@ -161,7 +161,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             World
           </Link>
@@ -170,7 +170,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Politics
           </Link>
@@ -179,7 +179,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Business
           </Link>
@@ -188,7 +188,7 @@ const Navbar = () => {
             color="white"
             mb={4}
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Technology
           </Link>
@@ -196,7 +196,7 @@ const Navbar = () => {
             href="/sports"
             color="white"
             fontSize="xl"
-            _hover={{ transform: "translateY(-2px)" , color: "cyan" }}
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
           >
             Sports
           </Link>
