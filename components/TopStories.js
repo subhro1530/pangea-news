@@ -12,70 +12,12 @@ import {
 } from "@chakra-ui/react";
 
 const apikey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
-const translateApiKey = "YOUR_MICROSOFT_TRANSLATOR_API_KEY"; // Replace with your Microsoft Translator API key
 
 const TopStories = () => {
   const [articles, setArticles] = useState([]);
   const [apiCategory, setApiCategory] = useState(["us"]);
   const [apiLanguage, setApiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
-  const [translateEnabled, setTranslateEnabled] = useState(false);
-
-  const handleTranslateToggle = () => {
-    setTranslateEnabled((prev) => !prev);
-  };
-
-  const translateText = async (text, targetLanguage) => {
-    try {
-      const response = await axios.post(
-        "https://api.cognitive.microsofttranslator.com/translate",
-        [
-          {
-            text,
-          },
-        ],
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Ocp-Apim-Subscription-Key": translateApiKey,
-          },
-          params: {
-            to: targetLanguage,
-          },
-        }
-      );
-
-      return response.data[0].translations[0].text;
-    } catch (error) {
-      console.error("Error translating text:", error);
-      return text;
-    }
-  };
-
-  const handleTranslate = async () => {
-    const translatedArticles = await Promise.all(
-      articles.map(async (newsHeadline) => {
-        const translatedTitle = await translateText(newsHeadline.title, "en");
-        const translatedDescription = await translateText(
-          newsHeadline.description,
-          "en"
-        );
-        const translatedContent = await translateText(
-          newsHeadline.content,
-          "en"
-        );
-
-        return {
-          ...newsHeadline,
-          title: translatedTitle,
-          description: translatedDescription,
-          content: translatedContent,
-        };
-      })
-    );
-
-    setArticles(translatedArticles);
-  };
 
   useEffect(() => {
     const fetchTopStories = async () => {
@@ -104,11 +46,7 @@ const TopStories = () => {
     fetchTopStories();
   }, [apiCategory, apiLanguage]);
 
-  useEffect(() => {
-    if (translateEnabled) {
-      handleTranslate();
-    }
-  }, [translateEnabled]);
+
 
   return (
     <VStack
@@ -123,14 +61,6 @@ const TopStories = () => {
         <Heading fontWeight={300} mb={5} fontSize="50px" color="white">
           Top Stories For You
         </Heading>
-        <Switch
-          colorScheme="teal"
-          size="lg"
-          onChange={handleTranslateToggle}
-          isChecked={translateEnabled}
-        >
-          Translate to English
-        </Switch>
       </Box>
       {loading ? (
         <Spinner size="xl" />
@@ -153,11 +83,6 @@ const TopStories = () => {
           </Box>
         ))
       )}
-      <Link href="/translate" passHref>
-        <Button colorScheme="teal" size="lg" mt={5}>
-          Translate Page to English
-        </Button>
-      </Link>
     </VStack>
   );
 };
