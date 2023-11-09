@@ -49,7 +49,7 @@ const TechnologyNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/giphy.gif')"
+      bgImage="url('https://i.pinimg.com/originals/d2/5f/60/d25f60f14ece7d93589eb9a76c28d058.gif')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -57,7 +57,7 @@ const TechnologyNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          Technology News
         </Heading>
       </Box>
       {loading ? (

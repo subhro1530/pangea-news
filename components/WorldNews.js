@@ -49,7 +49,7 @@ const WorldNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/giphy.gif')"
+      bgImage="url('/World.gif')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"

@@ -49,7 +49,7 @@ const BusinessNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/giphy.gif')"
+      bgImage="url('https://img.freepik.com/premium-photo/amazing-business-wallpaper-4k-background_839182-1646.jpg')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"

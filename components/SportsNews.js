@@ -49,7 +49,7 @@ const SportsNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/giphy.gif')"
+      bgImage="url('https://c4.wallpaperflare.com/wallpaper/971/967/737/sports-images-for-desktop-background-wallpaper-preview.jpg')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -57,7 +57,7 @@ const SportsNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          Sports News
         </Heading>
       </Box>
       {loading ? (

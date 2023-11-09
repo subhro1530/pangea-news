@@ -49,7 +49,7 @@ const HealthNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/giphy.gif')"
+      bgImage="url('https://wallpapers.com/images/featured/healthcare-oco8w27tkw40cp90.jpg')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -57,7 +57,7 @@ const HealthNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          Health News
         </Heading>
       </Box>
       {loading ? (
