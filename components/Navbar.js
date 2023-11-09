@@ -6,6 +6,7 @@ import {
   Spacer,
   Icon,
   useOutsideClick,
+  Button,
   VStack,
 } from "@chakra-ui/react";
 import { FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
@@ -34,8 +35,11 @@ const Navbar = () => {
 
   useOutsideClick({
     ref: navRef,
-    handler: () => {
-      closeDropdowns();
+    handler: (event) => {
+      // Check if the click event target is not the search button
+      if (!event.target.closest("#searchButton")) {
+        closeDropdowns();
+      }
     },
   });
 
@@ -213,6 +217,15 @@ const Navbar = () => {
           </Link>
         </Box>
       )}
+      {/* <Button
+        colorScheme="teal"
+        variant="outline"
+        mr={4}
+        onClick={toggleSearchModal}
+        id="searchButton"
+      >
+        Search
+      </Button> */}
 
       <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
         <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
@@ -240,6 +253,13 @@ const Navbar = () => {
           </Link>
         </VStack>
       )}
+      {/* SearchModal */}
+      {/* <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={toggleSearchModal}
+        onSearch={handleSearch}
+        onSpeechToText={handleSpeechToText}
+      /> */}
     </Flex>
   );
 };
