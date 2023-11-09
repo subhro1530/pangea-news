@@ -13,9 +13,9 @@ import {
 
 const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
-const WorldNews = () => {
+const HealthNews = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory] = useState(["world"]);
+  const [apiCategory] = useState(["health"]);
   const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +49,7 @@ const WorldNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/World.gif')"
+      bgImage="url('https://wallpapers.com/images/featured/healthcare-oco8w27tkw40cp90.jpg')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -57,7 +57,7 @@ const WorldNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          Health News
         </Heading>
       </Box>
       {loading ? (
@@ -131,4 +131,4 @@ const WorldNews = () => {
   );
 };
 
-export default WorldNews;
+export default HealthNews;

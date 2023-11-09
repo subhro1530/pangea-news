@@ -1,19 +1,19 @@
 // pages/world.js
 import Head from "next/head";
 import Navbar from "../components/Navbar";
-import WorldNews from "@/components/WorldNews";
+import HealthNews from "@/components/HealthNews";
 import Footer from "@/components/Footer";
 
-const World = () => {
+const Health = () => {
   return (
     <div>
       <Head>
-        <title>World News | Pangea</title>
+        <title>Health News | Pangea</title>
       </Head>
       <Navbar />
-      <WorldNews />
+      <HealthNews />
       <Footer />
     </div>
   );
 };
-export default World;
+export default Health;

@@ -13,9 +13,9 @@ import {
 
 const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
-const WorldNews = () => {
+const TechnologyNews = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory] = useState(["world"]);
+  const [apiCategory] = useState(["technology"]);
   const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +49,7 @@ const WorldNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/World.gif')"
+      bgImage="url('https://i.pinimg.com/originals/d2/5f/60/d25f60f14ece7d93589eb9a76c28d058.gif')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -57,7 +57,7 @@ const WorldNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          Technology News
         </Heading>
       </Box>
       {loading ? (
@@ -131,4 +131,4 @@ const WorldNews = () => {
   );
 };
 
-export default WorldNews;
+export default TechnologyNews;

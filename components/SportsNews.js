@@ -13,9 +13,9 @@ import {
 
 const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
-const WorldNews = () => {
+const SportsNews = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory] = useState(["world"]);
+  const [apiCategory] = useState(["sports"]);
   const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +49,7 @@ const WorldNews = () => {
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('/World.gif')"
+      bgImage="url('https://c4.wallpaperflare.com/wallpaper/971/967/737/sports-images-for-desktop-background-wallpaper-preview.jpg')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -57,7 +57,7 @@ const WorldNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          Sports News
         </Heading>
       </Box>
       {loading ? (
@@ -131,4 +131,4 @@ const WorldNews = () => {
   );
 };
 
-export default WorldNews;
+export default SportsNews;
