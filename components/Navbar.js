@@ -95,7 +95,7 @@ const Navbar = () => {
           Business
         </Link>
         <Link
-          href="/politics"
+          href="/health"
           mr={4}
           color="white"
           _hover={{ transform: "translateY(-2px)", color: "cyan" }}

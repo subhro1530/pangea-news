@@ -1,19 +1,19 @@
-// pages/world.js
+// pages/sports.js
 import Head from "next/head";
 import Navbar from "../components/Navbar";
-import WorldNews from "@/components/WorldNews";
+import SportsNews from "@/components/SportsNews";
 import Footer from "@/components/Footer";
 
-const World = () => {
+const Sports = () => {
   return (
     <div>
       <Head>
-        <title>World News | Pangea</title>
+        <title>Sports News | Pangea</title>
       </Head>
       <Navbar />
-      <WorldNews />
+      <SportsNews />
       <Footer />
     </div>
   );
 };
-export default World;
+export default Sports;
