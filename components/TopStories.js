@@ -15,8 +15,8 @@ const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
 const TopStories = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory] = useState(["world"]);
-  const [apiLanguage] = useState(["en"]);
+  const [apiCategory, setApiCategory] = useState(["us"]);
+  const [apiLanguage, setApiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -76,7 +76,52 @@ const TopStories = () => {
               boxShadow: "lg",
             }}
           >
-            {/* ... (unchanged code for displaying news articles) */}
+            <Link href={newsHeadline.url} isExternal>
+              <Image
+                src={newsHeadline.image}
+                alt={newsHeadline.title}
+                borderRadius="md"
+                mb={4}
+              />
+              <Heading
+                color="white"
+                as="h2"
+                fontSize="30px"
+                fontWeight="300"
+                size="md"
+                mb={2}
+                textDecoration="none"
+              >
+                {newsHeadline.title}
+              </Heading>
+            </Link>
+            <Text fontSize="sm" color="grey">
+              {newsHeadline.description}
+            </Text>
+            <Text fontSize="sm" color="grey">
+              {newsHeadline.content}.
+            </Text>
+            <Text fontSize="xs" color="white">
+              Read more at :
+              <Link
+                href={newsHeadline.source.url}
+                fontSize="xs"
+                fontWeight="bold"
+                color="lavenderblush"
+                fontStyle="Ubuntu"
+                textShadow="2px -1px 4px white"
+                textDecoration="none"
+                target="_blank"
+              >
+                {newsHeadline.source.url}
+              </Link>
+            </Text>
+            <Text fontSize="xs" color="white">
+              Published At : {newsHeadline.publishedAt}
+            </Text>
+            <Text fontSize="xs" color="white">
+              Source : {newsHeadline.source.name}
+            </Text>
           </Box>
         ))
       )}
