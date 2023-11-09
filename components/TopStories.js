@@ -7,14 +7,16 @@ import {
   Image,
   Link,
   Spinner,
+  Switch,
+  Button, // Import Button component from Chakra UI
 } from "@chakra-ui/react";
 
-const apikey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
+const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
 const TopStories = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory, setapiCategory] = useState(["world"]);
-  const [apiLanguage, setapiLanguage] = useState(["en"]);
+  const [apiCategory] = useState(["world"]);
+  const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,6 +45,7 @@ const TopStories = () => {
 
     fetchTopStories();
   }, [apiCategory, apiLanguage]);
+
   return (
     <VStack
       // mt={8}

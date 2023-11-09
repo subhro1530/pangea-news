@@ -91,7 +91,7 @@ const Navbar = () => {
           Business
         </Link>
         <Link
-          href="/politics"
+          href="/health"
           mr={4}
           color="white"
           _hover={{ transform: "translateY(-2px)", color: "cyan" }}
@@ -156,7 +156,7 @@ const Navbar = () => {
             background="transparent"
             border="none"
           >
-            <Icon as={FaTimes} mr={5}/>
+            <Icon as={FaTimes} mr={5} />
           </Box>
           <Link
             href="/"
@@ -215,7 +215,7 @@ const Navbar = () => {
       )}
 
       <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
-        <FaUserPlus size="1.5em" color="white" mr={2}  cursor="pointer" />
+        <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
       </Box>
 
       {isUserDropdownOpen && (
