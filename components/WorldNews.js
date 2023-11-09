@@ -15,8 +15,8 @@ const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
 const WorldNews = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory, setApiCategory] = useState(["world"]);
-  const [apiLanguage, setApiLanguage] = useState(["en"]);
+  const [apiCategory] = useState(["world"]);
+  const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -70,8 +70,8 @@ const WorldNews = () => {
             bgColor="#0d0d0d"
             borderRadius="md"
             boxShadow="md"
-                width="50vw"
-                mb={5}
+            width="50vw"
+            mb={5}
             transition="transform 0.2s"
             _hover={{
               transform: "scale(1.02)",
