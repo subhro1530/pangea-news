@@ -13,6 +13,7 @@ import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import TopStories from "@/components/TopStories";
+import SearchBar from "@/components/SearchBar";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       </Head>
 
       <Navbar zIndex={1000} />
+      {/* <SearchBar /> */}
 
       <Container
         maxW="100vw"

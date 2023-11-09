@@ -112,7 +112,6 @@ const TopStories = () => {
                 fontWeight="bold"
                 color="lavenderblush"
                 fontStyle="Ubuntu"
-                textShadow="2px -1px 4px white"
                 textDecoration="none"
                 target="_blank"
               >
