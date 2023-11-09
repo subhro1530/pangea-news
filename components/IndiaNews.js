@@ -13,10 +13,10 @@ import {
 
 const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
-const TopStories = () => {
+const IndiaNews = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory, setApiCategory] = useState(["general"]);
-  const [apiLanguage, setApiLanguage] = useState(["en"]);
+  const [apiCountry] = useState(["in"]);
+  const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const TopStories = () => {
       try {
         let url =
           "https://gnews.io/api/v4/top-headlines?category=" +
-          apiCategory +
+          apiCountry +
           "&lang=" +
           apiLanguage +
           "&apikey=" +
@@ -44,19 +44,20 @@ const TopStories = () => {
     };
 
     fetchTopStories();
-  }, [apiCategory, apiLanguage]);
+  }, [apiCountry, apiLanguage]);
+
   return (
     <VStack
       p="20px 50px"
-      bgImage="url('https://static.vecteezy.com/system/resources/thumbnails/013/654/649/original/3d-virtual-tv-studio-news-backdrop-for-tv-shows-tv-on-wall-3d-virtual-news-studio-background-loop-free-video.jpg')"
+      bgImage="url('/World.gif')"
       bgSize="cover"
       bgPosition="center"
       bgRepeat="no-repeat"
       bgAttachment="fixed"
     >
       <Box>
-        <Heading fontWeight={300} mb={5} fontSize="50px" color="white">
-          Top Stories For You
+        <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
+          World News
         </Heading>
       </Box>
       {loading ? (
@@ -70,6 +71,7 @@ const TopStories = () => {
             borderRadius="md"
             boxShadow="md"
             width="50vw"
+            mb={5}
             transition="transform 0.2s"
             _hover={{
               transform: "scale(1.02)",
@@ -128,4 +130,4 @@ const TopStories = () => {
   );
 };
 
-export default TopStories;
+export default IndiaNews;
