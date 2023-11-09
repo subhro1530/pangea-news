@@ -15,8 +15,8 @@ const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 
 const TopStories = () => {
   const [articles, setArticles] = useState([]);
-  const [apiCategory, setApiCategory] = useState(["general"]);
-  const [apiLanguage, setApiLanguage] = useState(["en"]);
+  const [apiCategory] = useState(["general"]);
+  const [apiLanguage] = useState(["en"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
