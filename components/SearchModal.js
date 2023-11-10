@@ -11,16 +11,20 @@ import {
   InputGroup,
   InputLeftElement,
   Icon,
+  Box,
   useToast,
+  VStack,
+  Link,
 } from "@chakra-ui/react";
-import { useEffect, useState, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useState,useEffect,useRef } from "react";
 
-
-const SearchModal = ({ isOpen, onClose, onSearch, onSpeechToText }) => {
+const SearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const inputRef = useRef();
   const toast = useToast();
+  const timeoutRef = useRef();
 
   useEffect(() => {
     if (isOpen) {
@@ -37,18 +41,30 @@ const SearchModal = ({ isOpen, onClose, onSearch, onSpeechToText }) => {
     }
   }, [isOpen, toast]);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    onSearch(searchQuery);
+    // Fetch search results using GNews API
+    const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
+    const url = `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setSearchResults(data.articles || []);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setSearchResults([]);
+    }
   };
 
   const handleInputClick = (e) => {
     e.stopPropagation(); // Stop the click event from propagating to the modal and closing it
+    clearTimeout(timeoutRef.current); // Clear the timeout on input click
   };
 
-  const handleInputBlur = (e) => {
+  const handleInputBlur = () => {
     // Delay the modal close to allow the search button to be clicked
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       onClose();
     }, 100);
   };
@@ -74,9 +90,30 @@ const SearchModal = ({ isOpen, onClose, onSearch, onSpeechToText }) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onClick={handleInputClick}
                 onBlur={handleInputBlur}
+                onFocus={() => clearTimeout(timeoutRef.current)}
               />
             </InputGroup>
           </form>
+
+          {/* Display search results */}
+          {searchResults.length > 0 && (
+            <VStack mt={4} align="left">
+              {searchResults.map((result, index) => (
+                <Box key={index}>
+                  {result.image && (
+                    <img
+                      src={result.image}
+                      alt={result.title}
+                      style={{ borderRadius: "8px", marginBottom: "8px" }}
+                    />
+                  )}
+                  <Link href={result.url} isExternal>
+                    {result.title}
+                  </Link>
+                </Box>
+              ))}
+            </VStack>
+          )}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" type="submit">

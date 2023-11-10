@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div>
       <Head>
-        <title>Pangea News</title>
+        <title>Home | Pangea News</title>
       </Head>
 
       <Navbar zIndex={1000} />
