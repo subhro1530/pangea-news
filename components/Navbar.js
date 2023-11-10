@@ -1,4 +1,3 @@
-// components/Navbar.js
 import {
   Box,
   Flex,
@@ -6,17 +5,20 @@ import {
   Spacer,
   Icon,
   useOutsideClick,
-  Button,
+  IconButton,
   VStack,
 } from "@chakra-ui/react";
-import { FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { FaUserPlus, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import SearchBar from "./SearchBar"; // Import the SearchBar component
+import SearchModal from "./SearchModal";
 
 const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false); // New state for search visibility
   const navRef = useRef();
   const router = useRouter();
 
@@ -27,6 +29,20 @@ const Navbar = () => {
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
+
+  const toggleSearch = () => {
+    setIsSearchVisible(!isSearchVisible);
+  };
+
+  useOutsideClick({
+    ref: navRef,
+    handler: (event) => {
+      if (!event.target.closest("#searchButton")) {
+        closeDropdowns();
+        setIsSearchVisible(false); // Close search on outside click
+      }
+    },
+  });
 
   const closeDropdowns = () => {
     setIsMobileNavOpen(false);
@@ -119,6 +135,34 @@ const Navbar = () => {
         </Link>
       </Box>
 
+      {/* Add a button to toggle search */}
+      <IconButton
+        icon={<FaSearch />}
+        color="white"
+        fontSize="1.5em"
+        backgroundColor="transparent"
+        cursor="pointer"
+        ml={2}
+        onClick={toggleSearch}
+        id="searchButton"
+      />
+
+      {/* Render the search component conditionally */}
+      {isSearchVisible && (
+        <SearchModal
+          isOpen={true} // Use the correct state or prop to control the modal visibility
+          onClose={() => setIsSearchVisible(false)} // Close search on modal close
+          onSearch={(query) => {
+            // Handle search functionality here
+            console.log("Search Query:", query);
+          }}
+          onSpeechToText={() => {
+            // Handle speech-to-text functionality here
+            console.log("Speech-to-text clicked");
+          }}
+        />
+      )}
+
       <Spacer />
 
       <Box display={{ base: "flex", md: "none" }} onClick={toggleMobileNav}>
@@ -129,6 +173,9 @@ const Navbar = () => {
           cursor="pointer"
           zIndex="200"
         />
+        <Box color="white">
+          Search
+        </Box>
       </Box>
 
       {isMobileNavOpen && (
@@ -217,15 +264,6 @@ const Navbar = () => {
           </Link>
         </Box>
       )}
-      {/* <Button
-        colorScheme="teal"
-        variant="outline"
-        mr={4}
-        onClick={toggleSearchModal}
-        id="searchButton"
-      >
-        Search
-      </Button> */}
 
       <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
         <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
@@ -253,13 +291,6 @@ const Navbar = () => {
           </Link>
         </VStack>
       )}
-      {/* SearchModal */}
-      {/* <SearchModal
-        isOpen={isSearchModalOpen}
-        onClose={toggleSearchModal}
-        onSearch={handleSearch}
-        onSpeechToText={handleSpeechToText}
-      /> */}
     </Flex>
   );
 };

@@ -9,7 +9,7 @@ import {
 import { FaSearch, FaMicrophone } from "react-icons/fa";
 import { useState } from "react";
 
-const SearchBar = ({ onSearch, onSpeechToText }) => {
+const SearchBar = ({ onSearch, onSpeechToText, isVisible }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
@@ -21,7 +21,7 @@ const SearchBar = ({ onSearch, onSpeechToText }) => {
   };
 
   return (
-    <Box mt={50}>
+    <Box mt={50} display={isVisible ? "block" : "none"}>
       <InputGroup>
         <InputLeftElement
           pointerEvents="none"

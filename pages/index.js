@@ -23,7 +23,7 @@ const Home = () => {
       </Head>
 
       <Navbar zIndex={1000} />
-      {/* <SearchBar /> */}
+      <SearchBar />
 
       <Container
         maxW="100vw"
@@ -91,7 +91,7 @@ const Home = () => {
         </Flex>
       </Container>
       <About />
-      <TopStories />
+      {/* <TopStories /> */}
       <Footer />
     </div>
   );
