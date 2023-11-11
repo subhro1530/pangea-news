@@ -80,8 +80,8 @@ const SearchModal = ({ isOpen, onClose }) => {
             <InputGroup>
               <InputLeftElement
                 pointerEvents="none"
-                children={<Icon as={FaSearch} color="gray.300" />}
               />
+              <Icon as={FaSearch} color="gray.300" />
               <Input
                 ref={inputRef}
                 type="text"
