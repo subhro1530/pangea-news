@@ -81,7 +81,7 @@ const SearchModal = ({ isOpen, onClose }) => {
               <InputLeftElement
                 pointerEvents="none"
               />
-              <Icon as={FaSearch} color="gray.300" />
+              <Icon as={FaSearch} mt={3} color="gray.300" />
               <Input
                 ref={inputRef}
                 type="text"

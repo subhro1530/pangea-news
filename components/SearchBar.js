@@ -25,8 +25,8 @@ const SearchBar = ({ onSearch, onSpeechToText, isVisible }) => {
       <InputGroup>
         <InputLeftElement
           pointerEvents="none"
-          children={<Icon as={FaSearch} color="gray.300" />}
         />
+        <Icon as={FaSearch} color="gray.300" />
         <Input
           type="text"
           placeholder="Search"
