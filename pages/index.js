@@ -1,7 +1,6 @@
 // pages/index.js
 import Head from "next/head";
-
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"; // Import the useRouter hook
 import {
   Container,
   Heading,
@@ -14,9 +13,15 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
-import TopStories from "@/components/TopStories";
 
 const Home = () => {
+  const router = useRouter(); // Use the useRouter hook
+
+  const handleExploreClick = () => {
+    // Use the router to navigate to the desired page
+    router.push("/explore"); // Replace "/explore" with the path you want to navigate to
+  };
+
   return (
     <div>
       <Head>
@@ -35,16 +40,16 @@ const Home = () => {
         zIndex={800}
       >
         <Flex
-          justify="space-between" // Utilize more space
+          justify="space-between"
           align="center"
           h="100%"
-          px={{ base: 4, md: 8 }} // Add padding to the left and right
+          px={{ base: 4, md: 8 }}
         >
           <VStack
             spacing={4}
-            align="start" // Align text to the start
+            align="start"
             color="white"
-            textAlign="start" // Align text to the start
+            textAlign="start"
             w="80%"
             p="0px 20px"
           >
@@ -74,6 +79,7 @@ const Home = () => {
               color="white"
               _hover={{ bg: "teal.600" }}
               size="lg"
+              onClick={handleExploreClick}
             >
               Explore
             </Button>
@@ -91,7 +97,6 @@ const Home = () => {
         </Flex>
       </Container>
       <About />
-      {/* <TopStories /> */}
       <Footer />
     </div>
   );
