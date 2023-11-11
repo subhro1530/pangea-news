@@ -1,4 +1,3 @@
-// components/SearchModal.js
 import React, { useState, useEffect, useRef } from "react";
 import {
   Modal,
@@ -7,6 +6,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  Box,
   ModalFooter,
   Button,
   Input,
@@ -14,20 +14,23 @@ import {
   InputLeftElement,
   Icon,
   useToast,
+  VStack,
+  Link,
 } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
-import { useRouter } from "next/router";
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const inputRef = useRef();
   const toast = useToast();
-  const router = useRouter();
   const timeoutRef = useRef();
 
   useEffect(() => {
     if (isOpen) {
+      // Focus on the input element when the modal opens
       inputRef.current && inputRef.current.focus();
+      // Optionally show a toast message when the modal opens
       toast({
         title: "Search",
         description: "Press TAB and start typing to search!",
@@ -53,19 +56,16 @@ const SearchModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleInputClick = (e) => {};
+  const handleInputClick = (e) => {
+    e.stopPropagation(); // Stop the click event from propagating to the modal and closing it
+    clearTimeout(timeoutRef.current); // Clear the timeout on input click
+  };
 
   const handleInputBlur = () => {
+    // Delay the modal close to allow the search button to be clicked
     timeoutRef.current = setTimeout(() => {
       onClose();
     }, 100);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSearch();
-    }
   };
 
   return (
@@ -75,22 +75,48 @@ const SearchModal = ({ isOpen, onClose }) => {
         <ModalHeader>Search</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <Icon as={FaSearch} color="gray.300" />
-            </InputLeftElement>
-            <Input
-              ref={inputRef}
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onClick={handleInputClick}
-              onBlur={handleInputBlur}
-              onFocus={() => clearTimeout(timeoutRef.current)}
-              onKeyPress={handleKeyPress}
-            />
-          </InputGroup>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
+          >
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <Icon as={FaSearch} color="gray.300" />
+              </InputLeftElement>
+              <Input
+                ref={inputRef}
+                type="text"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onClick={handleInputClick}
+                onBlur={handleInputBlur}
+                onFocus={() => clearTimeout(timeoutRef.current)}
+              />
+            </InputGroup>
+          </form>
+
+          {/* Display search results */}
+          {searchResults.length > 0 && (
+            <VStack mt={4} align="left">
+              {searchResults.map((result, index) => (
+                <Box key={index}>
+                  {result.image && (
+                    <img
+                      src={result.image}
+                      alt={result.title}
+                      style={{ borderRadius: "8px", marginBottom: "8px" }}
+                    />
+                  )}
+                  <Link href={result.url} isExternal>
+                    {result.title}
+                  </Link>
+                </Box>
+              ))}
+            </VStack>
+          )}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" onClick={handleSearch}>
