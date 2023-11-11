@@ -33,7 +33,7 @@ const SearchModal = ({ isOpen, onClose }) => {
       // Optionally show a toast message when the modal opens
       toast({
         title: "Search",
-        description: "Start typing to search!",
+        description: "Press TAB and start typing to search!",
         status: "info",
         duration: 3000,
         isClosable: true,
@@ -44,7 +44,7 @@ const SearchModal = ({ isOpen, onClose }) => {
   const handleSearch = async () => {
     // Fetch search results using GNews API
     const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
-    const url = `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}`;
+    const url = `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&lang=en`;
 
     try {
       const response = await fetch(url);
@@ -70,8 +70,8 @@ const SearchModal = ({ isOpen, onClose }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="sm">
-      <ModalOverlay />
-      <ModalContent>
+      {/* <ModalOverlay /> */}
+      <ModalContent background="rgb(0,0,0,.9)" color="white">
         <ModalHeader>Search</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
