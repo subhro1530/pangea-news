@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -5,19 +6,18 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  Box,
   ModalFooter,
   Button,
   Input,
   InputGroup,
   InputLeftElement,
   Icon,
-  Box,
   useToast,
   VStack,
   Link,
 } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
-import { useState,useEffect,useRef } from "react";
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -41,8 +41,7 @@ const SearchModal = ({ isOpen, onClose }) => {
     }
   }, [isOpen, toast]);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  const handleSearch = async () => {
     // Fetch search results using GNews API
     const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
     const url = `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}`;
@@ -76,12 +75,16 @@ const SearchModal = ({ isOpen, onClose }) => {
         <ModalHeader>Search</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <form onSubmit={handleSearch}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
+          >
             <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-              />
-              <Icon as={FaSearch} mt={3} color="gray.300" />
+              <InputLeftElement pointerEvents="none">
+                <Icon as={FaSearch} color="gray.300" />
+              </InputLeftElement>
               <Input
                 ref={inputRef}
                 type="text"
@@ -116,7 +119,7 @@ const SearchModal = ({ isOpen, onClose }) => {
           )}
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="blue" type="submit">
+          <Button colorScheme="blue" onClick={handleSearch}>
             Search
           </Button>
           <Button colorScheme="gray" ml={2} onClick={onClose}>

@@ -1,5 +1,7 @@
 // pages/index.js
 import Head from "next/head";
+
+import { useRouter } from "next/router";
 import {
   Container,
   Heading,
@@ -13,7 +15,6 @@ import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import TopStories from "@/components/TopStories";
-import SearchBar from "@/components/SearchBar";
 
 const Home = () => {
   return (
@@ -23,7 +24,6 @@ const Home = () => {
       </Head>
 
       <Navbar zIndex={1000} />
-      <SearchBar />
 
       <Container
         maxW="100vw"
@@ -91,7 +91,7 @@ const Home = () => {
         </Flex>
       </Container>
       <About />
-      <TopStories />
+      {/* <TopStories /> */}
       <Footer />
     </div>
   );

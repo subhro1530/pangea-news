@@ -12,7 +12,6 @@ import { useRouter } from "next/router";
 import { FaUserPlus, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import { useState, useRef } from "react";
 import Image from "next/image";
-import SearchBar from "./SearchBar"; // Import the SearchBar component
 import SearchModal from "./SearchModal";
 
 const Navbar = () => {
