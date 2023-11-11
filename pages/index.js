@@ -13,6 +13,7 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
+import TopStories from "@/components/TopStories";
 
 const Home = () => {
   const router = useRouter(); // Use the useRouter hook
@@ -97,6 +98,7 @@ const Home = () => {
         </Flex>
       </Container>
       <About />
+      <TopStories />
       <Footer />
     </div>
   );
