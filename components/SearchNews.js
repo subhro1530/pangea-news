@@ -23,8 +23,8 @@ const SearchNews = ({ searchQuery }) => {
 
   const handleSearch = useCallback(async () => {
     // Fetch search results using GNews API
-    // const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
-    const apiKey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
+    const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
+    // const apiKey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
     const url =
       nextSearchQuery === ""
         ? `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&lang=en`
@@ -54,7 +54,6 @@ const SearchNews = ({ searchQuery }) => {
       bgPosition="center"
       bgRepeat="no-repeat"
       bgAttachment="fixed"
-      // marginTop="30px"
     >
       <Box>
         <form
