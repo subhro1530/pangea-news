@@ -1,12 +1,14 @@
 // pages/index.js
 import Head from "next/head";
-import { useRouter } from "next/router"; // Import the useRouter hook
+import { useRouter } from "next/router";
 import {
   Container,
   Heading,
   Text,
+  HStack,
   Flex,
   VStack,
+  Box,
   Button,
   Image,
 } from "@chakra-ui/react";
@@ -14,13 +16,13 @@ import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import TopStories from "@/components/TopStories";
+import Link from "next/link";
 
 const Home = () => {
-  const router = useRouter(); // Use the useRouter hook
+  const router = useRouter();
 
   const handleExploreClick = () => {
-    // Use the router to navigate to the desired page
-    router.push("/explore"); // Replace "/explore" with the path you want to navigate to
+    router.push("/explore");
   };
 
   return (
@@ -99,6 +101,43 @@ const Home = () => {
       </Container>
       <About />
       <TopStories />
+      <HStack overflow="hidden" width="100vw" height="80vh">
+        <VStack width="50%" height="100%">
+          <Box
+            as="h2"
+            textAlign="center"
+            fontWeight="200"
+            fontSize="40px"
+            m={0}
+            pt={5}
+            color="black"
+          >
+            A Subsidary of ACNS
+          </Box>
+          <Box p={5} overflow="scroll">
+            ACNS is a dynamic company excelling in web development, graphic
+            design, and robust security solutions. Founded by the accomplished
+            entrepreneur Shaswata Saha, who boasts an impressive portfolio of
+            successful ventures, including the innovative Pangea News. With 2.5
+            years of hands-on experience, Shaswata brings a wealth of skills in
+            project management, coding proficiency, creative design, and a keen
+            understanding of cybersecurity. For any inquiries or collaborations,
+            reach out to Shaswata Saha at{" "}
+            <Link href="mailto:shaswata.ssaha@gmail.com">
+              shaswata.ssaha@gmail.com.
+            </Link>
+            Elevate your digital presence with ACNS, where expertise meets
+            innovation.
+          </Box>
+        </VStack>
+        <iframe
+          margin="0px"
+          width="100%"
+          height="160%" // 16:9 aspect ratio (9/16 = 56.25)
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FNxOPcFMb0Rt3QQJQ8jdWuf%2FUntitled%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D35-6%26viewport%3D1708%252C174%252C0.26%26t%3Db7rCFiNeEdWcGElX-1%26scaling%3Dscale-down%26starting-point-node-id%3D35%253A6%26mode%3Ddesign&hide-ui=1&chrome=0"
+          allowFullScreen
+        ></iframe>
+      </HStack>
       <Footer />
     </div>
   );
