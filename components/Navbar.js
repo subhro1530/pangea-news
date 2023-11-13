@@ -3,6 +3,10 @@ import {
   Flex,
   Link,
   Spacer,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
   Icon,
   useOutsideClick,
   IconButton,
@@ -94,14 +98,34 @@ const Navbar = () => {
         >
           Home
         </Link>
-        <Link
-          href="/world"
-          mr={4}
-          color="white"
-          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
-        >
-          World
-        </Link>
+        <Menu>
+          <MenuButton
+            as={Link}
+            href="#"
+            mr={4}
+            color="white"
+            _hover={{ transform: "translateY(-2px)", color: "cyan" }}
+          >
+            World
+          </MenuButton>
+          <MenuList border="none" color="white" bgColor="rgb(0,0,0,.7)">
+            <MenuItem _hover={{ transform: "translateY(-2px)", color: "cyan" ,textDecoration:"none" }}
+              bgColor="rgb(0,0,0,.7)"
+              as={Link}
+              href="/world"
+              fontSize="l"
+            >
+              World
+            </MenuItem>
+            <MenuItem _hover={{ transform: "translateY(-2px)", color: "cyan", textDecoration:"none" }} bgColor="rgb(0,0,0,.7)" borderTop="1px solid grey" as={Link} href="/india" fontSize="l">
+              India
+            </MenuItem>
+            <MenuItem _hover={{ transform: "translateY(-2px)", color: "cyan" ,textDecoration:"none" }} bgColor="rgb(0,0,0,.7)" borderTop="1px solid grey" as={Link} href="/us" fontSize="l">
+              United States
+            </MenuItem>
+            {/* Add other countries here */}
+          </MenuList>
+        </Menu>
         <Link
           href="/business"
           mr={4}

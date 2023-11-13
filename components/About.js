@@ -29,6 +29,7 @@ const About = () => {
       alignItems="center"
       pt="40px"
       pb="40px"
+      margin="0px"
     >
       <Box
         position="absolute"
@@ -110,6 +111,15 @@ const About = () => {
               </VStack>
             </Box>
           </HStack>
+          <Box borderRadius="20px" height="100vh" width="80vw">
+            <iframe
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              height="100%"
+              width="100%"
+              src="/about.mp4"
+              frameborder="0"
+            ></iframe>
+          </Box>
         </VStack>
       </VStack>
     </Box>
