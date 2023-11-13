@@ -7,8 +7,8 @@ import {
   useOutsideClick,
   IconButton,
   VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { FaUserPlus, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import { useState, useRef } from "react";
 import Image from "next/image";
@@ -19,7 +19,7 @@ const Navbar = () => {
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false); // New state for search visibility
   const navRef = useRef();
-  const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
@@ -27,10 +27,6 @@ const Navbar = () => {
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
-  };
-
-  const toggleSearch = () => {
-    setIsSearchVisible(!isSearchVisible);
   };
 
   useOutsideClick({
@@ -73,7 +69,12 @@ const Navbar = () => {
     >
       <Box>
         <Link href="/" fontSize="2xl" fontWeight="bold" color="white">
-          <Image src="/hori.png" width={150} height={100}></Image>
+          <Image
+            src="/hori.png"
+            alt="Horizontal Logo"
+            width={150}
+            height={100}
+          ></Image>
         </Link>
       </Box>
 
@@ -142,25 +143,22 @@ const Navbar = () => {
         backgroundColor="transparent"
         cursor="pointer"
         ml={2}
-        onClick={toggleSearch}
+        onClick={() => {
+          if (!isSearchVisible) {
+            setIsSearchVisible(true);
+            onOpen();
+          } else {
+            onClose();
+            setIsSearchVisible(false);
+          }
+        }}
         id="searchButton"
       />
 
-      {/* Render the search component conditionally */}
-      {isSearchVisible && (
-        <SearchModal
-          isOpen={true} // Use the correct state or prop to control the modal visibility
-          onClose={() => setIsSearchVisible(false)} // Close search on modal close
-          onSearch={(query) => {
-            // Handle search functionality here
-            console.log("Search Query:", query);
-          }}
-          onSpeechToText={() => {
-            // Handle speech-to-text functionality here
-            console.log("Speech-to-text clicked");
-          }}
-        />
-      )}
+      <SearchModal
+        isOpen={isOpen} // Use the correct state or prop to control the modal visibility
+        onClose={onClose} // Close search on modal close
+      />
 
       <Spacer />
 
@@ -172,9 +170,7 @@ const Navbar = () => {
           cursor="pointer"
           zIndex="200"
         />
-        <Box color="white">
-          Search
-        </Box>
+        <Box color="white">Search</Box>
       </Box>
 
       {isMobileNavOpen && (
