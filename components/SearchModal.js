@@ -22,26 +22,9 @@ import { FaSearch } from "react-icons/fa";
 const SearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const inputRef = useRef();
-  const toast = useToast();
-  const timeoutRef = useRef();
 
-  useEffect(() => {
-    if (isOpen) {
-      // Focus on the input element when the modal opens
-      inputRef.current && inputRef.current.focus();
-      // Optionally show a toast message when the modal opens
-      toast({
-        title: "Search",
-        description: "Press TAB and start typing to search!",
-        status: "info",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  }, [isOpen, toast]);
-
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.stopPropagation();
     // Fetch search results using GNews API
     const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
     const url = `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&lang=en`;
@@ -56,18 +39,6 @@ const SearchModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleInputClick = (e) => {
-    e.stopPropagation(); // Stop the click event from propagating to the modal and closing it
-    clearTimeout(timeoutRef.current); // Clear the timeout on input click
-  };
-
-  const handleInputBlur = () => {
-    // Delay the modal close to allow the search button to be clicked
-    timeoutRef.current = setTimeout(() => {
-      onClose();
-    }, 100);
-  };
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="sm">
       {/* <ModalOverlay /> */}
@@ -78,7 +49,7 @@ const SearchModal = ({ isOpen, onClose }) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleSearch();
+              handleSearch(e);
             }}
           >
             <InputGroup>
@@ -86,14 +57,10 @@ const SearchModal = ({ isOpen, onClose }) => {
                 <Icon as={FaSearch} color="gray.300" />
               </InputLeftElement>
               <Input
-                ref={inputRef}
                 type="text"
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onClick={handleInputClick}
-                onBlur={handleInputBlur}
-                onFocus={() => clearTimeout(timeoutRef.current)}
               />
             </InputGroup>
           </form>
