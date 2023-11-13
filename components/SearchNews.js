@@ -23,7 +23,8 @@ const SearchNews = ({ searchQuery }) => {
 
   const handleSearch = useCallback(async () => {
     // Fetch search results using GNews API
-    const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
+    // const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
+    const apiKey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
     const url =
       nextSearchQuery === ""
         ? `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&lang=en`
@@ -53,7 +54,7 @@ const SearchNews = ({ searchQuery }) => {
       bgPosition="center"
       bgRepeat="no-repeat"
       bgAttachment="fixed"
-      marginTop="30px"
+      // marginTop="30px"
     >
       <Box>
         <form
@@ -62,7 +63,7 @@ const SearchNews = ({ searchQuery }) => {
             handleSearch();
           }}
         >
-          <InputGroup>
+          <InputGroup mt={20}>
             <InputLeftElement pointerEvents="none">
               <Icon as={FaSearch} color="gray.300" />
             </InputLeftElement>
@@ -71,6 +72,9 @@ const SearchNews = ({ searchQuery }) => {
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setnextSearchQuery(e.target.value)}
+              // border="1px solid black"
+              bgColor="rgb(0,0,0,0.7)"
+              color="white"
             />
             <Button ml={2} colorScheme="blue" onClick={handleSearch}>
               Search
@@ -79,7 +83,7 @@ const SearchNews = ({ searchQuery }) => {
         </form>
       </Box>
       <Box>
-        <Heading fontWeight={300} mb={5} fontSize="50px" color="white">
+        <Heading fontWeight={300} mb={5} fontSize="50px" color="black">
           Search Results for{" "}
           {nextSearchQuery === "" ? searchQuery : nextSearchQuery}
         </Heading>
