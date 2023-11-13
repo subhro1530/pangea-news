@@ -19,10 +19,12 @@ import TopStories from "@/components/TopStories";
 import Link from "next/link";
 
 const Home = () => {
-  const router = useRouter();
-
   const handleExploreClick = () => {
-    router.push("/explore");
+    const topStoriesSection = document.getElementById("topStoriesSection");
+
+    if (topStoriesSection) {
+      topStoriesSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -80,6 +82,7 @@ const Home = () => {
             <Button
               bg="teal.400"
               color="white"
+              id="exploreBtn"
               _hover={{ bg: "teal.600" }}
               size="lg"
               onClick={handleExploreClick}

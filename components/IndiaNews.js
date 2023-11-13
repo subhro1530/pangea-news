@@ -16,7 +16,7 @@ const apikey = "17e5786f01adec6fc3b5c4421cf147d1";
 const IndiaNews = () => {
   const [articles, setArticles] = useState([]);
   const [apiCountry] = useState(["in"]);
-  const [apiLanguage] = useState(["en"]);
+  const [apiLanguage] = useState(["hi"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const IndiaNews = () => {
     >
       <Box>
         <Heading fontWeight={300} fontSize="70px" mb={10} mt={20} color="white">
-          World News
+          India News
         </Heading>
       </Box>
       {loading ? (
