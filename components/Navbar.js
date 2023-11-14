@@ -12,6 +12,7 @@ import {
   IconButton,
   VStack,
   useDisclosure,
+  color,
 } from "@chakra-ui/react";
 import { FaUserPlus, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import { useState, useRef } from "react";
@@ -157,16 +158,28 @@ const Navbar = () => {
         >
           Sports
         </Link>
+        <Link
+          href="/upload"
+          color="cyan"
+          ml={4}
+          padding="10px 20px"
+          borderRadius={5}
+          border="1px solid cyan"
+          _hover={{ transform: "translateY(-2px)", color: "black", backgroundColor:"cyan" }}
+        >
+          Upload
+        </Link>
       </Box>
 
       {/* Add a button to toggle search */}
       <IconButton
         icon={<FaSearch />}
         color="white"
-        fontSize="1.5em"
+        fontSize="1.2em"
         backgroundColor="transparent"
         cursor="pointer"
         ml={2}
+        _hover={{color:"black",backgroundColor:"white"}}
         onClick={() => {
           if (!isSearchVisible) {
             setIsSearchVisible(true);
@@ -194,7 +207,7 @@ const Navbar = () => {
           cursor="pointer"
           zIndex="200"
         />
-        <Box color="white">Search</Box>
+        <Box color="black">Search</Box>
       </Box>
 
       {isMobileNavOpen && (
