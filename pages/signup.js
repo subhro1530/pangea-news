@@ -176,7 +176,7 @@ const SignUp = () => {
           isChecked={acceptTerms}
           onChange={() => setAcceptTerms(!acceptTerms)}
           mb={4}
-          color="grey"
+          color="white"
         >
           I accept the terms and conditions
         </Checkbox>
