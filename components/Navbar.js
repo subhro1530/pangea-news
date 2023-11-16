@@ -110,7 +110,12 @@ const Navbar = () => {
             World
           </MenuButton>
           <MenuList border="none" color="white" bgColor="rgb(0,0,0,.7)">
-            <MenuItem _hover={{ transform: "translateY(-2px)", color: "cyan" ,textDecoration:"none" }}
+            <MenuItem
+              _hover={{
+                transform: "translateY(-2px)",
+                color: "cyan",
+                textDecoration: "none",
+              }}
               bgColor="rgb(0,0,0,.7)"
               as={Link}
               href="/world"
@@ -118,10 +123,32 @@ const Navbar = () => {
             >
               World
             </MenuItem>
-            <MenuItem _hover={{ transform: "translateY(-2px)", color: "cyan", textDecoration:"none" }} bgColor="rgb(0,0,0,.7)" borderTop="1px solid grey" as={Link} href="/india" fontSize="l">
+            <MenuItem
+              _hover={{
+                transform: "translateY(-2px)",
+                color: "cyan",
+                textDecoration: "none",
+              }}
+              bgColor="rgb(0,0,0,.7)"
+              borderTop="1px solid grey"
+              as={Link}
+              href="/india"
+              fontSize="l"
+            >
               India
             </MenuItem>
-            <MenuItem _hover={{ transform: "translateY(-2px)", color: "cyan" ,textDecoration:"none" }} bgColor="rgb(0,0,0,.7)" borderTop="1px solid grey" as={Link} href="/us" fontSize="l">
+            <MenuItem
+              _hover={{
+                transform: "translateY(-2px)",
+                color: "cyan",
+                textDecoration: "none",
+              }}
+              bgColor="rgb(0,0,0,.7)"
+              borderTop="1px solid grey"
+              as={Link}
+              href="/us"
+              fontSize="l"
+            >
               United States
             </MenuItem>
             {/* Add other countries here */}
@@ -165,7 +192,11 @@ const Navbar = () => {
           padding="10px 20px"
           borderRadius={5}
           border="1px solid cyan"
-          _hover={{ transform: "translateY(-2px)", color: "black", backgroundColor:"cyan" }}
+          _hover={{
+            transform: "translateY(-2px)",
+            color: "black",
+            backgroundColor: "cyan",
+          }}
         >
           Upload
         </Link>
@@ -179,7 +210,7 @@ const Navbar = () => {
         backgroundColor="transparent"
         cursor="pointer"
         ml={2}
-        _hover={{color:"black",backgroundColor:"white"}}
+        _hover={{ color: "black", backgroundColor: "white" }}
         onClick={() => {
           if (!isSearchVisible) {
             setIsSearchVisible(true);
@@ -209,6 +240,32 @@ const Navbar = () => {
         />
         <Box color="black">Search</Box>
       </Box>
+      <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
+        <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
+      </Box>
+
+      {isUserDropdownOpen && (
+        <VStack
+          bg="rgba(0, 0, 0, 0.9)"
+          position="fixed"
+          top="4.5rem"
+          right="1rem"
+          p={5}
+          borderRadius="md"
+          zIndex="150"
+          onClick={closeDropdowns}
+        >
+          <Link href="/signin" color="white" _hover={{ color: "cyan" }}>
+            Sign In
+          </Link>
+          <Link href="/signup" color="white" _hover={{ color: "cyan" }}>
+            Sign Up
+          </Link>
+          <Link href="/help" color="white" _hover={{ color: "cyan" }}>
+            Help
+          </Link>
+        </VStack>
+      )}
 
       {isMobileNavOpen && (
         <Box
@@ -227,7 +284,7 @@ const Navbar = () => {
           transition="0.3s ease-in-out"
           transform="translateX(0)"
         >
-          <Box
+          {/* <Box
             as="button"
             onClick={toggleMobileNav}
             position="absolute"
@@ -240,7 +297,7 @@ const Navbar = () => {
             border="none"
           >
             <Icon as={FaTimes} mr={5} />
-          </Box>
+          </Box> */}
           <Link
             href="/"
             color="white"
@@ -295,33 +352,6 @@ const Navbar = () => {
             Sports
           </Link>
         </Box>
-      )}
-
-      <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
-        <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
-      </Box>
-
-      {isUserDropdownOpen && (
-        <VStack
-          bg="rgba(0, 0, 0, 0.9)"
-          position="fixed"
-          top="4.5rem"
-          right="1rem"
-          p={5}
-          borderRadius="md"
-          zIndex="150"
-          onClick={closeDropdowns}
-        >
-          <Link href="/signin" color="white" _hover={{ color: "cyan" }}>
-            Sign In
-          </Link>
-          <Link href="/signup" color="white" _hover={{ color: "cyan" }}>
-            Sign Up
-          </Link>
-          <Link href="/help" color="white" _hover={{ color: "cyan" }}>
-            Help
-          </Link>
-        </VStack>
       )}
     </Flex>
   );

@@ -1,6 +1,6 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const password = "saha@2004";
+const password = ;
 const uri =
   "mongodb+srv://subhro1530:"+password+"@cluster0.xcxgdvf.mongodb.net/?retryWrites=true&w=majority";
 

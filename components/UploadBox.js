@@ -88,7 +88,7 @@ const UploadBox = ({ user }) => {
         color="cyan"
         align="center"
       >
-        <Heading as="h1" fontWeight={200} fontSize={50} mt={5} color="white">
+        <Heading textAlign="center" as="h1" fontWeight={200} fontSize={50} mt={5} color="white">
           Pangea Exclusive
         </Heading>
         <Text color="white" fontSize={20} fontWeight={200} textAlign="center">

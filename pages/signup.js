@@ -9,6 +9,7 @@ import {
   InputGroup,
   InputRightElement,
   Checkbox,
+  useToast,
 } from "@chakra-ui/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { signIn, useSession } from "next-auth/react";
@@ -23,6 +24,7 @@ const SignUp = () => {
   const { data: session } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const toast = useToast();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -47,8 +49,34 @@ const SignUp = () => {
     });
 
     if (!result.error) {
-      // SignUp successful, you can redirect or perform other actions
-      console.log("SignUp successful");
+      // MongoDB API call for signup
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, username, password, acceptTerms }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Signup Successful",
+          description: "Your details have been successfully submitted.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Signup Failed",
+          description: data.error || "Something went wrong.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
     } else {
       // SignUp failed, handle the error
       console.error("SignUp failed", result.error);
@@ -64,9 +92,8 @@ const SignUp = () => {
       alignItems="center"
     >
       <Navbar />
-      <Box width="80vw">
+      <Box textAlign="center" width="80vw">
         <Heading
-          textAlign="center"
           as="h2"
           size="xl"
           fontWeight={200}
@@ -120,7 +147,9 @@ const SignUp = () => {
               onClick={handleTogglePassword}
               h="1.75rem"
               size="sm"
-              color="gray.400"
+              color="white"
+              backgroundColor="transparent"
+              _hover={{ color: "black", backgroundColor: "white" }}
             />
           </InputRightElement>
         </InputGroup>
@@ -141,6 +170,7 @@ const SignUp = () => {
           isChecked={acceptTerms}
           onChange={() => setAcceptTerms(!acceptTerms)}
           mb={4}
+          color="grey"
         >
           I accept the terms and conditions
         </Checkbox>
