@@ -90,7 +90,7 @@ const SignUp = () => {
       bgColor="black"
       width="100vw"
       display="flex"
-      bgImage="https://archive.org/download/wp2757875-wallpaper-gif/wp2757875-wallpaper-gif.gif"
+      bgImage="https://e1.pxfuel.com/desktop-wallpaper/386/799/desktop-wallpaper-bg-red-blue-abstract-background.jpg"
       bgSize="cover"
       flexDirection="column"
       alignItems="center"
@@ -121,14 +121,26 @@ const SignUp = () => {
         </Heading>
 
         {/* Google Login Button */}
-        <Box display="flex" border="1px solid cyan" borderRadius={50} width="20%" alignItems="center" mb={10} padding="5px 10px" justifyContent="center" cursor="pointer" transition=".2s ease-in-out" _hover={{ bgColor:"cyan"}}>
+        <Box
+          display="flex"
+          border="1px solid cyan"
+          borderRadius={50}
+          width="20%"
+          alignItems="center"
+          mb={10}
+          padding="5px 10px"
+          justifyContent="center"
+          cursor="pointer"
+          transition=".2s ease-in-out"
+          _hover={{ bgColor: "cyan" }}
+        >
           <Image height={25} width={25} src="/gicon.png"></Image>
           <Button
             onClick={handleGoogleLogin}
             bgColor="transparent"
             color="white"
             // mb={4}
-            _hover={{bgColor:"transparent"}}
+            _hover={{ bgColor: "transparent" }}
           >
             Sign Up with Google
           </Button>
@@ -203,7 +215,13 @@ const SignUp = () => {
         <Button onClick={handleSignUp} colorScheme="teal" mb={4}>
           Sign Up
         </Button>
-        <Box color="white">Already have an account? <Link href="/signin" style={{color:"cyan"}}>Log In</Link>.</Box>
+        <Box color="white">
+          Already have an account?{" "}
+          <Link href="/signin" style={{ color: "cyan" }}>
+            Log In
+          </Link>
+          .
+        </Box>
       </Box>
       <Footer />
     </Box>

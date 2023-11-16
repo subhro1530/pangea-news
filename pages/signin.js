@@ -90,7 +90,7 @@ const SignIn = () => {
       bgColor="black"
       width="100vw"
       display="flex"
-      bgImage="https://archive.org/download/wp2757875-wallpaper-gif/wp2757875-wallpaper-gif.gif"
+      bgImage="https://e1.pxfuel.com/desktop-wallpaper/386/799/desktop-wallpaper-bg-red-blue-abstract-background.jpg"
       bgSize="cover"
       flexDirection="column"
       alignItems="center"
