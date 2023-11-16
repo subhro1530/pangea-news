@@ -92,13 +92,19 @@ const SignUp = () => {
       alignItems="center"
     >
       <Navbar />
-      <Box textAlign="center" width="80vw">
+      <Box
+        textAlign="center"
+        bgImage="https://archive.org/download/wp2757875-wallpaper-gif/wp2757875-wallpaper-gif.gif"
+        bgSize="cover"
+        pb={20}
+        width="80vw"
+      >
         <Heading
           as="h2"
           size="xl"
           fontWeight={200}
           fontSize="50px"
-          mt={20}
+          mt={40}
           color="white"
           mb={10}
         >
