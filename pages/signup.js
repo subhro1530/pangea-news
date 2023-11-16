@@ -15,6 +15,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { signIn, useSession } from "next-auth/react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import Link from "next/link";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -88,23 +90,30 @@ const SignUp = () => {
       bgColor="black"
       width="100vw"
       display="flex"
+      bgImage="https://archive.org/download/wp2757875-wallpaper-gif/wp2757875-wallpaper-gif.gif"
+      bgSize="cover"
       flexDirection="column"
       alignItems="center"
     >
       <Navbar />
       <Box
         textAlign="center"
-        bgImage="https://archive.org/download/wp2757875-wallpaper-gif/wp2757875-wallpaper-gif.gif"
-        bgSize="cover"
+        bgColor="rgb(0,0,0,.7)"
+        margin="50px 0"
+        pt={10}
+        pr={10}
+        pl={10}
         pb={20}
         width="80vw"
+        display="flex"
+        flexDirection="column"
       >
         <Heading
           as="h2"
           size="xl"
           fontWeight={200}
           fontSize="50px"
-          mt={40}
+          mt={20}
           color="white"
           mb={10}
         >
@@ -112,9 +121,18 @@ const SignUp = () => {
         </Heading>
 
         {/* Google Login Button */}
-        <Button onClick={handleGoogleLogin} colorScheme="blue" mb={4}>
-          Sign Up with Google
-        </Button>
+        <Box display="flex" border="1px solid cyan" borderRadius={50} width="20%" alignItems="center" mb={10} padding="5px 10px" justifyContent="center" cursor="pointer" transition=".2s ease-in-out" _hover={{ bgColor:"cyan"}}>
+          <Image height={25} width={25} src="/gicon.png"></Image>
+          <Button
+            onClick={handleGoogleLogin}
+            bgColor="transparent"
+            color="white"
+            // mb={4}
+            _hover={{bgColor:"transparent"}}
+          >
+            Sign Up with Google
+          </Button>
+        </Box>
 
         {/* Email Input */}
         <Input
@@ -185,6 +203,7 @@ const SignUp = () => {
         <Button onClick={handleSignUp} colorScheme="teal" mb={4}>
           Sign Up
         </Button>
+        <Box color="white">Already have an account? <Link href="/signin" style={{color:"cyan"}}>Log In</Link>.</Box>
       </Box>
       <Footer />
     </Box>

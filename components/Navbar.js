@@ -34,30 +34,10 @@ const Navbar = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
-  useOutsideClick({
-    ref: navRef,
-    handler: (event) => {
-      if (!event.target.closest("#searchButton")) {
-        closeDropdowns();
-        setIsSearchVisible(false); // Close search on outside click
-      }
-    },
-  });
-
   const closeDropdowns = () => {
     setIsMobileNavOpen(false);
     setIsUserDropdownOpen(false);
   };
-
-  useOutsideClick({
-    ref: navRef,
-    handler: (event) => {
-      // Check if the click event target is not the search button
-      if (!event.target.closest("#searchButton")) {
-        closeDropdowns();
-      }
-    },
-  });
 
   return (
     <Flex
@@ -284,20 +264,6 @@ const Navbar = () => {
           transition="0.3s ease-in-out"
           transform="translateX(0)"
         >
-          {/* <Box
-            as="button"
-            onClick={toggleMobileNav}
-            position="absolute"
-            top={4}
-            right={4}
-            color="white"
-            cursor="pointer"
-            fontSize="xl"
-            background="transparent"
-            border="none"
-          >
-            <Icon as={FaTimes} mr={5} />
-          </Box> */}
           <Link
             href="/"
             color="white"

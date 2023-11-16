@@ -38,7 +38,7 @@ const Help = () => {
         <Box mb={8}>
           <Text color="white" fontSize="xl" mb={4}>
             Welcome to the Help Center of Pangea News, founded by Shaswata Saha,
-            founder of ACNS. If you have any questions or need assistance,
+            founder of ACNS along with Pratham Aggarwal. If you have any questions or need assistance,
             please refer to the following information:
           </Text>
 
