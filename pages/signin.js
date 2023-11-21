@@ -134,7 +134,7 @@ const SignIn = () => {
           transition=".2s ease-in-out"
           _hover={{ bgColor: "cyan" }}
         >
-          <Image height={25} width={25} src="/gicon.png"></Image>
+          <Image height={20} width={20} src="/gicon.png" alt="Google"></Image>
           <Button
             onClick={handleGoogleLogin}
             bgColor="transparent"
@@ -196,7 +196,7 @@ const SignIn = () => {
           Sign In
         </Button>
         <Box color="white">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signin" style={{ color: "cyan" }}>
             Sign Up
           </Link>

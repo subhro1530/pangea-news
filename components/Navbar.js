@@ -23,8 +23,10 @@ const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false); // New state for search visibility
-  const navRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const mobileNavRef = useRef(null);
+  const userDropdownRef = useRef(null);
+  const searchModalRef = useRef(null);
 
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
@@ -34,10 +36,40 @@ const Navbar = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
-  const closeDropdowns = () => {
-    setIsMobileNavOpen(false);
-    setIsUserDropdownOpen(false);
-  };
+  // Hook for handling outside clicks
+  useOutsideClick({
+    ref: mobileNavRef,
+    handler: () => {
+      // Close mobile nav if open
+      if (isMobileNavOpen) {
+        setIsMobileNavOpen(false);
+      }
+    },
+  });
+
+  useOutsideClick({
+    ref: userDropdownRef,
+    handler: (event) => {
+      // Check if the clicked element is a link or a child of a link
+      const isLinkClick = event.target.tagName === 'A' || event.target.closest('a');
+  
+      // Close user dropdown only if it's open and the click is not on a link
+      if (isUserDropdownOpen && !isLinkClick) {
+        setIsUserDropdownOpen(false);
+      }
+    },
+  });
+
+  useOutsideClick({
+    ref: searchModalRef,
+    handler: () => {
+      // Close search modal if open
+      if (isSearchVisible) {
+        onClose();
+        setIsSearchVisible(false);
+      }
+    },
+  });
 
   return (
     <Flex
@@ -191,6 +223,7 @@ const Navbar = () => {
         cursor="pointer"
         ml={2}
         _hover={{ color: "black", backgroundColor: "white" }}
+        ref={searchModalRef}
         onClick={() => {
           if (!isSearchVisible) {
             setIsSearchVisible(true);
@@ -210,7 +243,11 @@ const Navbar = () => {
 
       <Spacer />
 
-      <Box display={{ base: "flex", md: "none" }} onClick={toggleMobileNav}>
+      <Box
+        ref={mobileNavRef}
+        display={{ base: "flex", md: "none" }}
+        onClick={toggleMobileNav}
+      >
         <Icon
           as={isMobileNavOpen ? FaTimes : FaBars}
           size="1.5em"
@@ -220,7 +257,11 @@ const Navbar = () => {
         />
         <Box color="black">Search</Box>
       </Box>
-      <Box display={{ base: "flex", md: "flex" }} onClick={toggleUserDropdown}>
+      <Box
+        ref={userDropdownRef}
+        display={{ base: "flex", md: "flex" }}
+        onClick={toggleUserDropdown}
+      >
         <FaUserPlus size="1.5em" color="white" mr={2} cursor="pointer" />
       </Box>
 
@@ -233,7 +274,6 @@ const Navbar = () => {
           p={5}
           borderRadius="md"
           zIndex="150"
-          onClick={closeDropdowns}
         >
           <Link href="/signin" color="white" _hover={{ color: "cyan" }}>
             Sign In
@@ -260,7 +300,6 @@ const Navbar = () => {
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          ref={navRef}
           transition="0.3s ease-in-out"
           transform="translateX(0)"
         >
