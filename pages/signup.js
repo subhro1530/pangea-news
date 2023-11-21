@@ -135,7 +135,7 @@ const SignUp = () => {
           transition=".2s ease-in-out"
           _hover={{ bgColor: "cyan" }}
         >
-          <Image height={25} width={25} src="/gicon.png"></Image>
+          <Image height={20} width={20} src="/gicon.png" alt="Google"></Image>
           <Button
             onClick={handleGoogleLogin}
             bgColor="transparent"
