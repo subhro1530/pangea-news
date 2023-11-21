@@ -14,6 +14,7 @@ export default NextAuth({
       return true;
     },
     async redirect(url, baseUrl) {
+      url="http://localhost:3000"
       return baseUrl;
     },
   },

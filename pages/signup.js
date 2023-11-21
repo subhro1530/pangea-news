@@ -49,6 +49,7 @@ const SignUp = () => {
       email,
       password,
     });
+    console.log("Result=" , result);
 
     if (!result.error) {
       // MongoDB API call for signup
