@@ -9,7 +9,6 @@ const Search = ({}) => {
   const router = useRouter();
   const { query } = router.query;
   const decodedQuery = query ? decodeURIComponent(query) : "";
-  console.log(decodedQuery);
   return (
     <div>
       <Head>
