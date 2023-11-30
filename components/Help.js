@@ -38,8 +38,9 @@ const Help = () => {
         <Box mb={8}>
           <Text color="white" fontSize="xl" mb={4}>
             Welcome to the Help Center of Pangea News, founded by Shaswata Saha,
-            founder of ACNS along with Pratham Aggarwal. If you have any questions or need assistance,
-            please refer to the following information:
+            founder of ACNS along with Pratham Aggarwal. If you have any
+            questions or need assistance, please refer to the following
+            information:
           </Text>
 
           <Box>
@@ -57,8 +58,11 @@ const Help = () => {
             </Text>
             <Text color="white" fontSize="md" mb={4}>
               If you encounter any issues or have specific inquiries, you can
-              reach out to our support team at{" "}
-              <a href="mailto:shaswata.ssaha@gmail.com" style={{ color: "cyan" }}>
+              reach out to our support team at
+              <a
+                href="mailto:shaswata.ssaha@gmail.com"
+                style={{ color: "cyan" }}
+              >
                 shaswata.ssaha@gmail.com
               </a>
               .
@@ -70,8 +74,9 @@ const Help = () => {
               3. Report Issues
             </Text>
             <Text color="white" fontSize="md" mb={4}>
-              To report any bugs or problems with the app, please use the "Report
-              Issue" feature within the app or send an email to{" "}
+              To report any bugs or problems with the app, please use the
+              &quot;Report Issue&quot; feature within the app or send an email
+              to
               <a href="mailto:issues@pangeanews.com" style={{ color: "cyan" }}>
                 issues@pangeanews.com
               </a>
