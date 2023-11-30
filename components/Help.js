@@ -1,8 +1,6 @@
 // components/Help.js
 import React from "react";
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 const Help = () => {
   return (
@@ -13,7 +11,6 @@ const Help = () => {
       flexDirection="column"
       alignItems="center"
     >
-      <Navbar />
       <Box
         width="80vw"
         p={8}
@@ -87,7 +84,6 @@ const Help = () => {
           {/* Add more sections based on your app's features or requirements */}
         </Box>
       </Box>
-      <Footer />
     </Box>
   );
 };
