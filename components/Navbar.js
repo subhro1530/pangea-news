@@ -26,7 +26,6 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const mobileNavRef = useRef(null);
   const userDropdownRef = useRef(null);
-  const searchModalRef = useRef(null);
 
   const toggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
@@ -56,17 +55,6 @@ const Navbar = () => {
       // Close user dropdown only if it's open and the click is not on a link
       if (isUserDropdownOpen && !isLinkClick) {
         setIsUserDropdownOpen(false);
-      }
-    },
-  });
-
-  useOutsideClick({
-    ref: searchModalRef,
-    handler: () => {
-      // Close search modal if open
-      if (isSearchVisible) {
-        onClose();
-        setIsSearchVisible(false);
       }
     },
   });
@@ -223,7 +211,6 @@ const Navbar = () => {
         cursor="pointer"
         ml={2}
         _hover={{ color: "black", backgroundColor: "white" }}
-        ref={searchModalRef}
         onClick={() => {
           if (!isSearchVisible) {
             setIsSearchVisible(true);
