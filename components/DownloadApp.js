@@ -1,4 +1,3 @@
-// pages/download/index.js
 import { Box, Button, Heading, Image, Flex } from "@chakra-ui/react";
 import Typist from "react-typist";
 import { useState } from "react";
