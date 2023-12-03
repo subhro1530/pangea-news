@@ -19,17 +19,17 @@ import { FaSearch } from "react-icons/fa";
 const SearchNews = ({ searchQuery }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [nextSearchQuery, setnextSearchQuery] = useState("");
+  const [SearchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [changeInput, setchangeInput] = useState(false);
 
   const handleSearch = useCallback(async () => {
     // Fetch search results using GNews API
+    const inputElement = document.getElementById("inputBox");
+    inputElement.value = searchQuery;
     const apiKey = "17e5786f01adec6fc3b5c4421cf147d1";
     // const apiKey = "f5b874a8cc8c944a5ef4fcf58b8a59b9";
-    const url =
-      nextSearchQuery === ""
-        ? `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&lang=en`
-        : `https://gnews.io/api/v4/search?q=${nextSearchQuery}&apikey=${apiKey}&lang=en`;
-
+    const url = `https://gnews.io/api/v4/search?q=${searchQuery}&apikey=${apiKey}&lang=en`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -40,11 +40,32 @@ const SearchNews = ({ searchQuery }) => {
       setSearchResults([]);
       setLoading(false);
     }
-  }, [nextSearchQuery, searchQuery]);
+  }, [searchQuery]);
 
   useEffect(() => {
+    setSearchQuery(searchQuery);
     handleSearch();
-  }, [handleSearch]);
+  }, [searchQuery, handleSearch]);
+
+  const handleNextSearch = (e) => {
+    e.preventDefault();
+    // const inputElement = document.getElementById("inputBox");
+    // setnextSearchQuery(inputElement.value);
+    const encodednextSearchQuery = encodeURIComponent(nextSearchQuery);
+    window.location.href = `/search?query=${encodednextSearchQuery}`;
+  };
+
+  const handleInputClick = (e) => {
+    if (!changeInput) {
+      if (e.target.value != "") {
+        e.target.value = "";
+        setchangeInput(true);
+      }
+    }
+  };
+  const handleInputChange = (e) => {
+    setnextSearchQuery(e.target.value);
+  };
 
   return (
     <VStack
@@ -59,7 +80,7 @@ const SearchNews = ({ searchQuery }) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSearch();
+            handleNextSearch();
           }}
         >
           <InputGroup mt={20}>
@@ -69,13 +90,14 @@ const SearchNews = ({ searchQuery }) => {
             <Input
               type="text"
               placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setnextSearchQuery(e.target.value)}
+              id="inputBox"
+              onClick={handleInputClick}
               // border="1px solid black"
+              onChange={handleInputChange}
               bgColor="rgb(0,0,0,0.7)"
               color="white"
             />
-            <Button ml={2} colorScheme="blue" onClick={handleSearch}>
+            <Button ml={2} colorScheme="blue" onClick={handleNextSearch}>
               Search
             </Button>
           </InputGroup>
@@ -83,8 +105,7 @@ const SearchNews = ({ searchQuery }) => {
       </Box>
       <Box>
         <Heading fontWeight={300} mb={5} fontSize="50px" color="black">
-          Search Results for{" "}
-          {nextSearchQuery === "" ? searchQuery : nextSearchQuery}
+          Search Results for {SearchQuery}
         </Heading>
       </Box>
       {loading ? (
@@ -152,7 +173,9 @@ const SearchNews = ({ searchQuery }) => {
           </Box>
         ))
       ) : (
-        <Text color="white">No search results found.</Text>
+        <Text color="white" textShadow={"3px 1px 2px black"}>
+          No search results found.
+        </Text>
       )}
     </VStack>
   );
