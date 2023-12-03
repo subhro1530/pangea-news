@@ -50,8 +50,9 @@ const Navbar = () => {
     ref: userDropdownRef,
     handler: (event) => {
       // Check if the clicked element is a link or a child of a link
-      const isLinkClick = event.target.tagName === 'A' || event.target.closest('a');
-  
+      const isLinkClick =
+        event.target.tagName === "A" || event.target.closest("a");
+
       // Close user dropdown only if it's open and the click is not on a link
       if (isUserDropdownOpen && !isLinkClick) {
         setIsUserDropdownOpen(false);
@@ -184,6 +185,14 @@ const Navbar = () => {
           _hover={{ transform: "translateY(-2px)", color: "cyan" }}
         >
           Sports
+        </Link>
+        <Link
+          href="/downloadapp"
+          ml={4}
+          color="white"
+          _hover={{ transform: "translateY(-2px)", color: "cyan" }}
+        >
+          Our App
         </Link>
         <Link
           href="/upload"
