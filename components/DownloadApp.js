@@ -5,22 +5,17 @@ import { useState } from "react";
 const DownloadApp = () => {
   const [isTypingDone, setIsTypingDone] = useState(false);
   const handleDownload = () => {
-    // Replace 'your-app.apk' with the actual name of your APK file
     const apkFileName = "pangea_news.apk";
     const apkFilePath = `/${apkFileName}`;
 
-    // Create a link element
     const downloadLink = document.createElement("a");
     downloadLink.href = apkFilePath;
     downloadLink.download = apkFileName;
 
-    // Append the link to the document
     document.body.appendChild(downloadLink);
 
-    // Trigger the click event to start the download
     downloadLink.click();
 
-    // Remove the link from the document
     document.body.removeChild(downloadLink);
   };
 
