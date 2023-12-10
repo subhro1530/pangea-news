@@ -21,7 +21,7 @@ const DownloadApp = () => {
 
   const handleViewDemo = () => {
     // Open the YouTube video link when "View Demo" is clicked
-    window.location.href = "https://youtu.be/-zamH62KkSc";
+    window.location.href = "https://youtu.be/NbuqLD3Y200";
   };
 
   return (
