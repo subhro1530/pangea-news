@@ -17,6 +17,7 @@ import Footer from "@/components/Footer";
 import About from "@/components/About";
 import TopStories from "@/components/TopStories";
 import Link from "next/link";
+import DownloadApp from "@/components/DownloadApp";
 
 const Home = () => {
   const handleExploreClick = () => {
@@ -141,6 +142,7 @@ const Home = () => {
           allowFullScreen
         ></iframe>
       </HStack>
+      <DownloadApp />
       <Footer />
     </div>
   );

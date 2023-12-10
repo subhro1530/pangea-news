@@ -1,9 +1,9 @@
 import { Box, Button, Heading, Image, Flex } from "@chakra-ui/react";
-import Typist from "react-typist";
 import { useState } from "react";
 
 const DownloadApp = () => {
   const [isTypingDone, setIsTypingDone] = useState(false);
+
   const handleDownload = () => {
     const apkFileName = "pangea_news.apk";
     const apkFilePath = `/${apkFileName}`;
@@ -19,17 +19,11 @@ const DownloadApp = () => {
     document.body.removeChild(downloadLink);
   };
 
-  const handleTypingDone = () => {
-    setTimeout(() => {
-      setIsTypingDone(true);
-    }, 5000);
+  const handleViewDemo = () => {
+    // Open the YouTube video link when "View Demo" is clicked
+    window.location.href = "https://youtu.be/-zamH62KkSc";
   };
 
-  const handleResetTyping = () => {
-    setTimeout(() => {
-      setIsTypingDone(false);
-    }, 5000);
-  };
   return (
     <Box
       backgroundImage="url('https://media.istockphoto.com/id/1251629816/photo/the-perfect-setting-to-complete-work.webp?b=1&s=170667a&w=0&k=20&c=e8mSv3z6PhT18EUmzgtdMCbQecYzhHoqu_ts8tFdN6c=')"
@@ -51,15 +45,7 @@ const DownloadApp = () => {
       >
         <Flex flexDirection="column" alignItems="center">
           <Heading fontWeight={300} mb={5} fontSize="50px" color="white">
-            {isTypingDone ? (
-              <Typist key="reset" onTypingDone={handleResetTyping}>
-                Introducing Pangea News App for Android!
-              </Typist>
-            ) : (
-              <Typist key="typing" onTypingDone={handleTypingDone}>
-                Introducing Pangea News App for Android!
-              </Typist>
-            )}
+            Introducing Pangea News App for Android!
           </Heading>
           <Image
             src="/pangea-mobile.png"
@@ -71,9 +57,14 @@ const DownloadApp = () => {
             height="auto"
             mb="4"
           />
-          <Button colorScheme="blue" onClick={handleDownload}>
-            Download Now
-          </Button>
+          <Flex>
+            <Button colorScheme="blue" onClick={handleDownload} mr="2">
+              Download Now
+            </Button>
+            <Button colorScheme="green" onClick={handleViewDemo}>
+              View Demo
+            </Button>
+          </Flex>
         </Flex>
       </Box>
     </Box>
