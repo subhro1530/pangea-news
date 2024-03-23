@@ -1,3 +1,10 @@
+
+
+
+https://github.com/subhro1530/pangea-news/assets/113383437/f842275e-ff7d-4bb2-90c2-8daf3c472b0a
+
+
+
 # Pangea News
 
 Welcome to Pangea News – your gateway to the latest international news. This dynamic Next.js application allows users to search for news across various categories using a sleek user interface powered by Chakra UI.
