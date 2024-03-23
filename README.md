@@ -62,6 +62,10 @@ npm run dev
 
 5.  Open your browser and visit http://localhost:3000 to view the application.
 
+##  Images
+![image](https://github.com/subhro1530/pangea-news/assets/113383437/6610ad17-252d-4e3b-b6fa-955001840ea7)
+![image](https://github.com/subhro1530/pangea-news/assets/113383437/2ecdd28a-abc7-4202-9229-6b55e743fa77)
+
 ## Contributing
 Contributions are welcome! If you'd like to contribute to Pangea News, feel free to submit a pull request.
 
